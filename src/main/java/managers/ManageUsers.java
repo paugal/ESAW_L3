@@ -1,6 +1,7 @@
 package managers;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
@@ -69,6 +70,35 @@ public class ManageUsers {
 				return true;
 		}
 		return false;		
+	}
+	
+	public User getUser(String username) {
+		
+		String query = "SELECT username, fullmane, phoneNumber, location, mail, pwd FROM users WHERE username = ? ;";
+		PreparedStatement statement = null;
+		ResultSet rs = null;
+		User user = null;
+		
+		try {
+			statement = db.prepareStatement(query);
+			statement.setString(1,username);
+			rs = statement.executeQuery();
+			if (rs.next()) {
+				user = new User();
+				user.setUsername(rs.getString("usarname"));
+				user.setFullName(rs.getString("fullname"));
+				user.setMail(rs.getString("mail"));
+				user.setPwd1(rs.getString("pwd"));
+				user.setPhoneNumber(rs.getString("phoneNumber"));
+				user.setLocation(rs.getString("location"));
+			}
+			rs.close();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return user;
 	}
 
 }
