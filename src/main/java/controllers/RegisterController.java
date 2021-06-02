@@ -78,12 +78,12 @@ public class RegisterController extends HttpServlet {
 		String aux2 = (aux[aux.length-1]).substring(7);
 		aux2 = aux2.substring(0, aux2.length()-1);
 		switch(aux2) {
-		case "PRIMARY":
-			aux2 = "user name";
-			break;
-		case "phoneNumber":
-			aux2 = "phone number";
-			break;
+			case "PRIMARY":
+				aux2 = "user name";
+				break;
+			case "phoneNumber":
+				aux2 = "phone number";
+				break;
 		}
 		errmg = "Sorry, this " + aux2 + " is already in use!";
 		return errmg;

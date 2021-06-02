@@ -8,7 +8,7 @@
     	value="${login.username}" required>
     	
     <label class="w3-text-green" for="password"><b> Password </b></label>
-    <input class="w3-input w3-border w3-light-grey" type="text" name="password" id="password"
+    <input class="w3-input w3-border w3-light-grey" type="password" name="password" id="password"
     	value="${login.password}" required >
     	
     <input class="w3-btn w3-green" type="submit" name="sumbit" value="Submit">

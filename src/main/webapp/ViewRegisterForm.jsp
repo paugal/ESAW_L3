@@ -9,21 +9,20 @@
 			<p class="error"> ${user.errorMessages[loop.index]} </p>
 		</c:if>
 	</c:forEach>
-	<span class="error">${errorMessage}</span>
-	<br>
+	<span id="sqlError" class="error">${errorMessage}</span>
 </div>
 
 <form action="RegisterController" method="POST">
-	<br>
-	<label class="w3-text-green" for="username"><b>User name:</b></label><br>
+	
+	<label class="w3-text-green" for="username"><b>User name:</b></label>
 	<input class="w3-input w3-border w3-border-green w3-light-grey" type="text" id="username" name="username" placeholder="Name" 
-		value= "${user.username}" required><br>
+		value= "${user.username}" required>
 		
-	<label class="w3-text-green" for="fullName"><b>Full name:</b></label><br>
+	<label class="w3-text-green" for="fullName"><b>Full name:</b></label>
 	<input class="w3-input w3-border w3-border-green w3-light-grey" type="text" id="fullName" name="fullName" placeholder="Full name" 
-		value="${user.fullName}" required ><br>
+		value="${user.fullName}" required >
 		
-	<label class="w3-text-green" for="location"><b>Country:</b></label><br>
+	<label class="w3-text-green" for="location"><b>Country:</b></label>
 	<select class="w3-input w3-border w3-border-green w3-light-grey w3-text-gray" id="location" name="location">
 	   <option value="Afganistan">Afghanistan</option>
 	   <option value="Albania">Albania</option>
@@ -271,23 +270,25 @@
 	   <option value="Zaire">Zaire</option>
 	   <option value="Zambia">Zambia</option>
 	   <option value="Zimbabwe">Zimbabwe</option>
-	</select><br>
+	</select>
 	
-	<label class="w3-text-green" for="phoneNumber"><b>Phone Number:</b></label><br>
+	<label class="w3-text-green" for="phoneNumber"><b>Phone Number:</b></label>
 	<input class="w3-input w3-border w3-border-green w3-light-grey" type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" 
-		value= "${user.phoneNumber}" required pattern="[0-9]{9}"><br>
+		value= "${user.phoneNumber}" required pattern="[0-9]{9}">
 		
-	<label class="w3-text-green" for="mail"><b>Mail</b></label><br>
+	<label class="w3-text-green" for="mail"><b>Mail</b></label>
 	<input class="w3-input w3-border w3-border-green w3-light-grey" type="email" id="mail" name="mail" placeholder="Mail" 
-		value="${user.mail}" required ><br>
+		value="${user.mail}" required >
 		
-	<label class="w3-text-green" for="pwd1"><b>Password:</b></label><br>
+	<label class="w3-text-green" for="pwd1"><b>Password:</b></label>
 	<input class="w3-input w3-border w3-border-green w3-light-grey" type="password" id="pwd1" name="pwd1" placeholder="Password" 
-		value="${user.pwd1}" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" ><br>
+		value="${user.pwd1}" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" >
 		
-	<label class="w3-text-green" for="pwd2"><b>Confirm Password:</b></label><br>
+	<label class="w3-text-green" for="pwd2"><b>Confirm Password:</b></label>
 	<input class="w3-input w3-border w3-border-green w3-light-grey" type="password" id="pwd2" name="pwd2" placeholder="Confirm Password" 
-		value="${user.pwd2}" required ><br><br>
+		value="${user.pwd2}" required >
 	  
 	<input class="w3-btn w3-green" type="submit" name="sumbit" value="Submit">
 </form>
+
+<script src="js/script.js"></script>

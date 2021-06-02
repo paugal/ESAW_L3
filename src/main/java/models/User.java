@@ -75,6 +75,7 @@ public class User implements java.io.Serializable {
 		else 
 			error[2] = true;
 
+
 		System.out.println(pwd1);
 	}
 	
