@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import managers.ManageUsers;
 import models.Login;
+import models.User;
 
 /**
  * Servlet implementation class LoginController
@@ -39,10 +41,12 @@ public class LoginController extends HttpServlet {
 		Login login = new Login();
 		
 	    try {
-			
+	    	
+			ManageUsers manager = new ManageUsers();
 	    	BeanUtils.populate(login, request.getParameterMap());
+	    	User user = manager.getUser( login.getUsername());
 			
-	    	if (login.isComplete()) {
+	    	if (login.isComplete() && user.getPwd1() == login.getPassword()) {
 		    	
 	    		System.out.println("login OK, forwarding to ViewLoginDone ");
 		    	HttpSession session = request.getSession();
@@ -52,7 +56,6 @@ public class LoginController extends HttpServlet {
 			    
 		    } 
 			else {
-		     
 				System.out.println("user is not logged, forwarding to ViewLoginForm ");
 			    request.setAttribute("login",login);
 			    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");

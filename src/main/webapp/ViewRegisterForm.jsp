@@ -12,7 +12,7 @@
 	<span id="sqlError" class="error">${errorMessage}</span>
 </div>
 
-<form action="RegisterController" method="POST">
+<form action="RegisterController" method="POST" id = "form">
 	
 	<label class="w3-text-green" for="username"><b>User name:</b></label>
 	<input class="w3-input w3-border w3-border-green w3-light-grey" type="text" id="username" name="username" placeholder="Name" 

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<form action="LoginController" method="POST">    
+<form action="LoginController" method="POST" id="from2">    
     <label class="w3-text-green" for="username"><b> User id </b></label>
     <input class="w3-input w3-border w3-light-grey" type="text" name="username" id="username" 
     	value="${login.username}" required>
