@@ -1,4 +1,4 @@
-const form = document.querySelector("form");
+const myform = document.querySelector("form");
 const email = document.getElementById("mail");
 const pwd1 = document.getElementById("pwd1");
 const pwd2 = document.getElementById("pwd2");
@@ -23,7 +23,7 @@ email.addEventListener("input", function (event) {
 
 pwd2.addEventListener("input", checkPasswordValidity, false);
 
-form.addEventListener("submit", function (event) {
+myform.addEventListener("submit", function (event) {
 	checkPasswordValidity();
 	if (!this.checkValidity()) {
 		this.reportValidity();
@@ -31,6 +31,10 @@ form.addEventListener("submit", function (event) {
 	} 
 }, false);
 
-if( document.getElementById('sqlError').innerHTML == "" ){
-	document.getElementById('sqlError').style.display = "none";
-}
+document.addEventListener("DOMContentLoaded", function(event) { 
+	 if( document.getElementById('sqlError').innerHTML == "" ){
+		document.getElementById('sqlError').style.display = "none";
+	}else{
+		document.getElementById('sqlError').style.display = "block";
+	}
+});

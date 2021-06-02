@@ -1,11 +1,11 @@
 
 .errors{
 	padding: 5px;
+	text-align: center;
 }
 
 .error{
 	padding: 10px;
-	background-color: rgba(255,0,0,0.4);
 	border-radius: 5px;
 }
 
@@ -21,3 +21,4 @@ input, select{
 	width: 50% !important;
 	margin: 5px auto;
 }
+

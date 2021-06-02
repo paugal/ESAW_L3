@@ -70,18 +70,20 @@ public class User implements java.io.Serializable {
 		Pattern pattern = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$");
 		Matcher matcher = pattern.matcher(pwd1);
 		
-		if (matcher.matches())
-			this.pwd1 = pwd1;
-		else 
+		this.pwd1 = pwd1;
+		
+		if (!matcher.matches())
 			error[2] = true;
-
-
+		
+		
+		
 		System.out.println(pwd1);
 	}
 	
 	public void setPwd2(String pwd2) {
 		// equal to password 1
 		this.pwd2 = pwd2;
+		
 		System.out.println(pwd2);
 	}
 

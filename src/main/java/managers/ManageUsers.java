@@ -73,7 +73,7 @@ public class ManageUsers {
 	}
 	
 	public User getUser(String username) {
-		
+
 		String query = "SELECT username, fullname, phoneNumber, location, mail, pwd FROM users WHERE username = ? ;";
 		PreparedStatement statement = null;
 		ResultSet rs = null;

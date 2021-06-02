@@ -23,6 +23,7 @@ import models.User;
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String errorMessage;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,32 +46,26 @@ public class LoginController extends HttpServlet {
 			ManageUsers manager = new ManageUsers();
 	    	BeanUtils.populate(login, request.getParameterMap());
     		
-	    	
-		
 	    	if (login.isComplete() ) {
+	    		System.out.println("Login fields are complete");
 	    		User user = manager.getUser(login.getUsername());
-	    		System.out.println(user.getPwd1());
-	    		System.out.println(login.getPassword());
-		    	if(user.getPwd1().compareTo(login.getPassword()) == 0) {
+	    		
+		    	if(user != null && user.getPwd1().compareTo(login.getPassword()) == 0) {
 		    		System.out.println("login OK, forwarding to ViewLoginDone ");
 			    	HttpSession session = request.getSession();
 			    	session.setAttribute("user",login.getUsername());
 			    	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
 				    dispatcher.forward(request, response);
-		    	}else {
-					System.out.println("Password not correct, forwarding to ViewLoginForm ");
-				    request.setAttribute("login",login);
-				    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
-				    dispatcher.forward(request, response);
+				    return;
+		    	} else {
+		    		errorMessage = "Invalid credentials, try again";
+				    request.setAttribute("errorMessage",errorMessage);
 				}
-	    		  
-		    } 
-			else {
-				System.out.println("user is not logged, forwarding to ViewLoginForm ");
-			    request.setAttribute("login",login);
-			    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
-			    dispatcher.forward(request, response);
-			}
+	    	}
+
+		    request.setAttribute("login",login);
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
+		    dispatcher.forward(request, response);
 		    	
 		    
 		} catch (IllegalAccessException | InvocationTargetException e) {

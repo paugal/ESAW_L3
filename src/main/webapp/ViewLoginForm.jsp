@@ -2,7 +2,12 @@
     pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<form action="LoginController" method="POST" id="from2">    
+<!-- Errors -->
+<div class="errors">
+	<span id="sqlError" class="error">${errorMessage}</span>
+</div>
+
+<form action="LoginController" method="POST" id="form2">    
     <label class="w3-text-green" for="username"><b> User id </b></label>
     <input class="w3-input w3-border w3-light-grey" type="text" name="username" id="username" 
     	value="${login.username}" required>
@@ -13,3 +18,5 @@
     	
     <input class="w3-btn w3-green" type="submit" name="sumbit" value="Submit">
 </form>
+
+<script src="js/script.js"></script>
