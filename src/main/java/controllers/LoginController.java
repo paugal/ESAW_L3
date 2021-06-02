@@ -44,24 +44,35 @@ public class LoginController extends HttpServlet {
 	    	
 			ManageUsers manager = new ManageUsers();
 	    	BeanUtils.populate(login, request.getParameterMap());
-	    	User user = manager.getUser( login.getUsername());
-			
-	    	if (login.isComplete() && user.getPwd1() == login.getPassword()) {
-		    	
-	    		System.out.println("login OK, forwarding to ViewLoginDone ");
-		    	HttpSession session = request.getSession();
-		    	session.setAttribute("user",login.getUsername());
-		    	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
-			    dispatcher.forward(request, response);
-			    
+    		
+	    	
+		
+	    	if (login.isComplete() ) {
+	    		User user = manager.getUser(login.getUsername());
+	    		System.out.println(user.getPwd1());
+	    		System.out.println(login.getPassword());
+		    	if(user.getPwd1().compareTo(login.getPassword()) == 0) {
+		    		System.out.println("login OK, forwarding to ViewLoginDone ");
+			    	HttpSession session = request.getSession();
+			    	session.setAttribute("user",login.getUsername());
+			    	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
+				    dispatcher.forward(request, response);
+		    	}else {
+					System.out.println("Password not correct, forwarding to ViewLoginForm ");
+				    request.setAttribute("login",login);
+				    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
+				    dispatcher.forward(request, response);
+				}
+	    		  
 		    } 
 			else {
 				System.out.println("user is not logged, forwarding to ViewLoginForm ");
 			    request.setAttribute("login",login);
 			    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
 			    dispatcher.forward(request, response);
+			}
 		    	
-		    }
+		    
 		} catch (IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
 		}

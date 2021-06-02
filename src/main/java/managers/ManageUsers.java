@@ -74,7 +74,7 @@ public class ManageUsers {
 	
 	public User getUser(String username) {
 		
-		String query = "SELECT username, fullmane, phoneNumber, location, mail, pwd FROM users WHERE username = ? ;";
+		String query = "SELECT username, fullname, phoneNumber, location, mail, pwd FROM users WHERE username = ? ;";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		User user = null;
@@ -85,7 +85,7 @@ public class ManageUsers {
 			rs = statement.executeQuery();
 			if (rs.next()) {
 				user = new User();
-				user.setUsername(rs.getString("usarname"));
+				user.setUsername(rs.getString("username"));
 				user.setFullName(rs.getString("fullname"));
 				user.setMail(rs.getString("mail"));
 				user.setPwd1(rs.getString("pwd"));
